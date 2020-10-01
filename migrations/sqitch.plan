@@ -2,3 +2,4 @@
 %project=ohmypop
 
 init 2020-10-01T20:21:35Z flyworkz <pedron.dorian@gmail.com> # Création de la table pop
+functions/insert_rest 2020-10-01T20:52:18Z flyworkz <pedron.dorian@gmail.com> # fonction d'insertion d'un pop dans la bdd
