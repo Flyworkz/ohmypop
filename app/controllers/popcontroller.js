@@ -1,8 +1,14 @@
 const Pop = require('../models/Pop');
 
 const popController = {
-    findAll: async (req, res) => {
+    findAll: async (_, res) => {
         res.json(await Pop.findAll());
+    },
+
+    addPop: async (req, res) => {
+        const newPop = new Pop(req.body);
+        await newPop.save();
+        res.json(newPop);
     }
 }
 
