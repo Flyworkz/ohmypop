@@ -1,0 +1,20 @@
+{
+  "name": "ohmypop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flyworkz/ohmypop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flyworkz/ohmypop/issues"
+  },
+  "homepage": "https://github.com/Flyworkz/ohmypop#readme"
+}
