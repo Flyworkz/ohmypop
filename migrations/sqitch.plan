@@ -4,3 +4,4 @@
 init 2020-10-01T20:21:35Z flyworkz <pedron.dorian@gmail.com> # Création de la table pop
 functions/insert_rest 2020-10-01T20:52:18Z flyworkz <pedron.dorian@gmail.com> # fonction d'insertion d'un pop dans la bdd
 functions/pop_by_collection 2020-10-01T21:00:03Z flyworkz <pedron.dorian@gmail.com> # Filtrer les pops par collection
+functions/insert_json 2020-10-01T22:23:10Z flyworkz <pedron.dorian@gmail.com> # Insertion d'un pop à partir d'un json
