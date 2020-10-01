@@ -1,10 +1,8 @@
 const { Router } = require('express');
+const popController = require('./controllers/popcontroller');
 
 const router = Router();
 
-// route de test
-router.get('/test', (_, res) => {
-    res.json('test');
-});
+router.get('/pops', popController.findAll);
 
 module.exports = router;
