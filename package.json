@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Flyworkz/ohmypop.git"
@@ -16,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/Flyworkz/ohmypop/issues"
   },
-  "homepage": "https://github.com/Flyworkz/ohmypop#readme"
+  "homepage": "https://github.com/Flyworkz/ohmypop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
