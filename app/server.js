@@ -15,5 +15,4 @@ app.launch = () => {
     });
 }
 
-
 module.exports = app;
