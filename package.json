@@ -1,7 +1,7 @@
 {
   "name": "ohmypop",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projet d'API permettant de rescenser sa collection de pops.",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
