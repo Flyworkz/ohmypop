@@ -45,15 +45,7 @@ class Pop {
                 this.id
             ]);
         } else {
-            const insertedPop = await db.query(
-                'SELECT * FROM new_pop($1, $2, $3, $4);', 
-                [
-                    this.figurine_number, 
-                    this.collection, 
-                    this.label, 
-                    this.status
-                ]
-            );
+            const insertedPop = await db.query('SELECT * FROM new_pop($1);', [this]);
     
             if (insertedPop.rowCount) {
                 this.id = insertedPop.rows[0].id;
