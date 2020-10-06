@@ -28,4 +28,4 @@ _coming soon_
 
 /!\ Lien disponible uniquement lorsque le serveur est démarré /!\
 
-http://localhost:<port>/api-docs
+http://localhost:<PORT du .env>/api-docs
