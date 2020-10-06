@@ -23,3 +23,9 @@ _coming soon_
 ## Seeding
 
 _coming soon_
+
+## Utilisation
+
+/!\ Lien disponible uniquement lorsque le serveur est démarré /!\
+
+http://localhost:<process.env.PORT>/api-docs
