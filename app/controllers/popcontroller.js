@@ -5,7 +5,7 @@ const popController = {
         res.json(await Pop.findAll());
     },
 
-    addPop: async (req, res) => {
+    addOrUpdatePop: async (req, res) => {
         const newPop = new Pop(req.body);
         await newPop.save();
         res.json(newPop);

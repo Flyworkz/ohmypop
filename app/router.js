@@ -12,6 +12,6 @@ router.get('/pops/:id', popController.findOne);
 
 router.get('/pops/collection/:collection', popController.findByCollection);
 
-router.post('/pops', validateBody(popSchema), popController.addPop);
+router.put('/pops', validateBody(popSchema), popController.addOrUpdatePop);
 
 module.exports = router;
