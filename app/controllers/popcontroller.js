@@ -9,6 +9,10 @@ const popController = {
         const newPop = new Pop(req.body);
         await newPop.save();
         res.json(newPop);
+    },
+
+    findOne: async (req, res) => {
+        res.json(await Pop.findOne(req.params.id));
     }
 }
 

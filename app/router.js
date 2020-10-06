@@ -8,6 +8,8 @@ const { validateBody } = require('./services/validator');
 
 router.get('/pops', popController.findAll);
 
+router.get('/pops/:id', popController.findOne);
+
 router.post('/pops', validateBody(popSchema), popController.addPop);
 
 module.exports = router;
