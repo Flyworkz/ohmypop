@@ -14,4 +14,6 @@ router.get('/pops/collection/:collection', popController.findByCollection);
 
 router.put('/pops', validateBody(popSchema), popController.addOrUpdatePop);
 
+router.delete('/pops/:id', popController.deleteOne);
+
 module.exports = router;

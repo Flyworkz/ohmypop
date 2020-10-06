@@ -17,6 +17,12 @@ const popController = {
 
     findByCollection: async (req, res) => {
         res.json(await Pop.findByCollection(req.params.collection));
+    },
+
+    deleteOne: async (req, res) => {
+        const popToDelete = new Pop(await Pop.findOne(req.params.id));
+        popToDelete.delete();
+        res.json(`Pop d'id: ${req.params.id} supprimé`)
     }
 }
 
