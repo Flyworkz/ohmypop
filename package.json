@@ -22,7 +22,8 @@
     "express": "^4.17.1",
     "express-swagger-generator": "^1.1.17",
     "joi": "^17.2.1",
-    "pg": "^8.3.3"
+    "pg": "^8.3.3",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"

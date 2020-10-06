@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const popController = require('./controllers/popcontroller');
-
-const router = Router();
-
 const popSchema = require('./schemas/pop');
 const { validateBody } = require('./services/validator');
+const { flush, cache } = require('./cache/cacheStrategy');
+
+const router = Router();
 
 /**
  * Cette route permet de récupérer tous les pops
@@ -12,7 +12,7 @@ const { validateBody } = require('./services/validator');
  * @group pops - Les routes concernant les pops
  * @returns {JSON} 200 - Un tableau de pops
  */
-router.get('/pops', popController.findAll);
+router.get('/pops', cache, popController.findAll);
 
 /**
  * Cette route permet de récupérer un pop par son ID
@@ -20,7 +20,7 @@ router.get('/pops', popController.findAll);
  * @group pops - Les routes concernant les pops
  * @returns {JSON} 200 - Un pop
  */
-router.get('/pops/:id', popController.findOne);
+router.get('/pops/:id', cache, popController.findOne);
 
 /**
  * Cette route permet de récupérer tous les pops d'une collection
@@ -28,7 +28,7 @@ router.get('/pops/:id', popController.findOne);
  * @group pops - Les routes concernant les pops
  * @returns {JSON} 200 - Un tableau de pops
  */
-router.get('/pops/collection/:collection', popController.findByCollection);
+router.get('/pops/collection/:collection', cache, popController.findByCollection);
 
 /**
  * Cette route permet d'ajouter un pop ou de le modifier s'il possède un ID
@@ -41,7 +41,7 @@ router.get('/pops/collection/:collection', popController.findByCollection);
  * @param {boolean} status.body.required - Etat du pop
  * @returns {JSON} 200 - Un pop
  */
-router.put('/pops', validateBody(popSchema), popController.addOrUpdatePop);
+router.put('/pops', validateBody(popSchema), flush, popController.addOrUpdatePop);
 
 /**
  * Cette route permet de supprimer un pop par son ID
@@ -49,6 +49,6 @@ router.put('/pops', validateBody(popSchema), popController.addOrUpdatePop);
  * @group pops - Les routes concernant les pops
  * @returns {JSON} 200 - Validation de la suppression avec l'ID du pop supprimé
  */
-router.delete('/pops/:id', popController.deleteOne);
+router.delete('/pops/:id', flush, popController.deleteOne);
 
 module.exports = router;
