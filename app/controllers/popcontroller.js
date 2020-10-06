@@ -13,6 +13,10 @@ const popController = {
 
     findOne: async (req, res) => {
         res.json(await Pop.findOne(req.params.id));
+    },
+
+    findByCollection: async (req, res) => {
+        res.json(await Pop.findByCollection(req.params.collection));
     }
 }
 
