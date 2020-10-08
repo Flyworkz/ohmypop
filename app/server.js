@@ -2,12 +2,21 @@ require('dotenv').config();
 
 const express = require('express');
 const router = require('./router');
+const cors = require('cors');
 const expressSwagger = require('express-swagger-generator');
 
 const app = express();
 const swaggerGenerator = expressSwagger(app);
 
 const port = process.env.PORT || 5555;
+
+// Sert les fichiers statics
+app.use( express.static(__dirname + '/../public') );
+
+// * autorise n'importe qui à utiliser l'API
+app.use(cors({
+	origin: '*'
+}));
 
 // Middleware permettant d'envoyer et de recevoir du json dans les requêtes
 app.use(express.json());
