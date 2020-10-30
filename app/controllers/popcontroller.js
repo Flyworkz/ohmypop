@@ -21,14 +21,14 @@ const popController = {
     addPop: async (req, res) => {
         try {
             const newPop = new Pop(req.body);
-            const insertedPop = await newPop.save();
-            if (!insertedPop) {
+            await newPop.save();
+            if (!newPop.id) {
                 throw new Error("L'insertion du pop a échouée");
             }
             res.json({
                 message: "Insertion du pop effectuée avec succès",
                 success: true,
-                data: insertedPop
+                data: newPop
             });
         } catch (err) {
             res.json({
