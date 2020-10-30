@@ -17,19 +17,19 @@ router.get('/pops', cache, popController.findAll);
 
 /**
  * Cette route permet de récupérer un pop par son ID
- * @route GET /pops/:id
+ * @route GET /pops/pop/:id
  * @group pops - Les routes concernant les pops
  * @returns {JSON} 200 - Un pop
  */
-router.get('/pops/:id', cache, popController.findOne);
+router.get('/pops/pop/:id', cache, popController.findOne);
 
 /**
  * Cette route permet de récupérer tous les pops d'une collection
- * @route GET /pops/collection/:collection
+ * @route GET /pops/collections/collection/:collection
  * @group pops - Les routes concernant les pops
  * @returns {JSON} 200 - Un tableau de pops
  */
-router.get('/pops/collection/:collection', cache, popController.findByCollection);
+router.get('/pops/collections/collection/:collection', cache, popController.findByCollection);
 
 /**
  * Cette route permet d'ajouter un pop ou de le modifier s'il possède un ID
@@ -46,11 +46,11 @@ router.put('/pops', validateBody(popSchema), flush, popController.addOrUpdatePop
 
 /**
  * Cette route permet de supprimer un pop par son ID
- * @route DELETE /pops/:id
+ * @route DELETE /pops/pop/:id
  * @group pops - Les routes concernant les pops
  * @returns {JSON} 200 - Validation de la suppression avec l'ID du pop supprimé
  */
-router.delete('/pops/:id', flush, popController.deleteOne);
+router.delete('/pops/pop/:id', flush, popController.deleteOne);
 
 router.use(mainController.notFound);
 
