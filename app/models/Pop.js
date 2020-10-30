@@ -54,13 +54,9 @@ class Pop {
     }
 
     async delete() {
-        if (this.id) {
-            const deletedPop = await db.query('DELETE FROM pop WHERE id = $1', [this.id]);
-            if (deletedPop.rowCount) {
-                return true;
-            } else {
-                return false;
-            }
+        const deletedPop = await db.query('DELETE FROM pop WHERE id = $1', [this.id]);
+        if (deletedPop.rowCount) {
+            return true;
         } else {
             return false;
         }
