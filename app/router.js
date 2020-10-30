@@ -3,6 +3,7 @@ const popController = require('./controllers/popcontroller');
 const popSchema = require('./schemas/pop');
 const { validateBody } = require('./services/validator');
 const { flush, cache } = require('./cache/cacheStrategy');
+const mainController = require('./controllers/maincontroller');
 
 const router = Router();
 
@@ -50,5 +51,7 @@ router.put('/pops', validateBody(popSchema), flush, popController.addOrUpdatePop
  * @returns {JSON} 200 - Validation de la suppression avec l'ID du pop supprimé
  */
 router.delete('/pops/:id', flush, popController.deleteOne);
+
+router.use(mainController.notFound);
 
 module.exports = router;
