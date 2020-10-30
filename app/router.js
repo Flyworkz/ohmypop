@@ -3,9 +3,10 @@ const popController = require('./controllers/popcontroller');
 const popSchema = require('./schemas/pop');
 const { validateBody } = require('./services/validator');
 const { flush, cache } = require('./cache/cacheStrategy');
+const mainController = require('./controllers/maincontroller');
 
 const router = Router();
-
+router.get('/', mainController.getFront);
 /**
  * Cette route permet de récupérer tous les pops
  * @route GET /pops

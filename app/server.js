@@ -11,7 +11,7 @@ const swaggerGenerator = expressSwagger(app);
 const port = process.env.PORT || 5555;
 
 // Sert les fichiers statics
-app.use( express.static(__dirname + '/../public') );
+app.use('/', express.static(__dirname + '/../public'));
 
 // * autorise n'importe qui à utiliser l'API
 app.use(cors({

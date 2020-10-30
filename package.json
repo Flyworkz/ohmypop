@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js",
-    "bundle": "browserify -e src/app.js -o public/assets/js/bundle.js"
+    "start": "npm run serve:production",
+    "build": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -23,12 +23,26 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-swagger-generator": "^1.1.17",
-    "joi": "^17.2.1",
-    "pg": "^8.3.3",
-    "redis": "^3.0.2"
+    "joi": "^17.3.0",
+    "pg": "^8.4.2",
+    "redis": "^3.0.2",
+    "vue": "^2.6.12"
   },
   "devDependencies": {
-    "browserify": "^16.5.2",
-    "dotenv": "^8.2.0"
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.2.1",
+    "node-sass": "^4.14.1",
+    "node-sass-magic-importer": "^5.3.2",
+    "sass-loader": "^10.0.4",
+    "vue-loader": "^15.9.4",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
   }
 }

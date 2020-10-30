@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oh My Pop !</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <title>Oh My Pop!</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    <div id="app">
+        <header>
+            <nav class="navbar">
+                <a class="navbar__logo" href="https://localhost:8080">
+                    <h1>Oh My Pop!</h1>
+                </a>
+            </nav>
+            <h2>Mes figurines Pop!</h2>
+            <div class="popsContainer" v-for="pop in pops">
+                <div class="pop">
+                    {{pop.label}}
+                    <!-- <img src="" alt=""> -->
+                </div>
+            </div>
+        </header>
+       
 
+    </div>
 
-
-    
-    <script src="./assets/js/bundle.js"></script>
+    <script src="/public/js/bundle.js"></script>
 </body>
 </html>
