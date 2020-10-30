@@ -8,7 +8,6 @@ const insertPopSchema = Joi.object({
 });
 
 const updatePopSchema = Joi.object({
-    id: Joi.number().integer().min(1),
     figurine_number: Joi.number().integer().min(1),
     collection: Joi.string(),
     label: Joi.string(),
