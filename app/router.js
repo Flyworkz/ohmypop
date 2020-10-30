@@ -4,6 +4,7 @@ const popSchema = require('./schemas/pop');
 const { validateBody } = require('./services/validator');
 const { flush, cache } = require('./cache/cacheStrategy');
 const mainController = require('./controllers/maincontroller');
+const { insertPopSchema, updatePopSchema } = require('./schemas/pop');
 
 const router = Router();
 
@@ -32,17 +33,29 @@ router.get('/pops/pop/:id', cache, popController.findOne);
 router.get('/pops/collections/collection/:collection', cache, popController.findByCollection);
 
 /**
- * Cette route permet d'ajouter un pop ou de le modifier s'il possède un ID
- * @route PUT /pops
+ * Cette route permet d'ajouter un pop
+ * @route POST /pops
  * @group pops - Les routes concernant les pops
- * @param {integer} id.body - ID du pop dans le cas d'un modification
  * @param {integer} figurine_number.body.required - Numéro du pop
  * @param {string} collection.body.required - Nom de la collection à laquelle appartient le pop
  * @param {string} label.body.required - Nom du pop
  * @param {boolean} status.body.required - Etat du pop
  * @returns {JSON} 200 - Un pop
  */
-router.put('/pops', validateBody(popSchema), flush, popController.addOrUpdatePop);
+router.post('/pops', validateBody(insertPopSchema), flush, popController.addPop);
+
+/**
+ * Cette route permet de modifier un pop
+ * @route PATCH /pops
+ * @group pops - Les routes concernant les pops
+ * @param {integer} id.body - ID du pop
+ * @param {integer} figurine_number.body.required - Numéro du pop
+ * @param {string} collection.body.required - Nom de la collection à laquelle appartient le pop
+ * @param {string} label.body.required - Nom du pop
+ * @param {boolean} status.body.required - Etat du pop
+ * @returns {JSON} 200 - Un pop
+ */
+router.patch('/pops/pop/:id', validateBody(updatePopSchema), flush, popController.updatePop);
 
 /**
  * Cette route permet de supprimer un pop par son ID

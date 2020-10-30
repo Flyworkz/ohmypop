@@ -1,11 +1,18 @@
 const Joi = require('joi');
 
-const popSchema = Joi.object({
-    id: Joi.number().integer().min(1),
+const insertPopSchema = Joi.object({
     figurine_number: Joi.number().integer().min(1).required(),
     collection: Joi.string().required(),
     label: Joi.string().required(),
     status: Joi.bool().required()
 });
 
-module.exports = popSchema; 
+const updatePopSchema = Joi.object({
+    id: Joi.number().integer().min(1),
+    figurine_number: Joi.number().integer().min(1),
+    collection: Joi.string(),
+    label: Joi.string(),
+    status: Joi.bool()
+});
+
+module.exports = { insertPopSchema, updatePopSchema }; 
