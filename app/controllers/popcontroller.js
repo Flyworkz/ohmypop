@@ -116,7 +116,7 @@ const popController = {
                 throw new Error("Ce pop n'existe pas");
             }
             const toDelete = await pop.delete();
-            if (!toDelete) {
+            if (toDelete === false) {
                 throw new Error("La suppression du pop a échouée");
             }
             res.json({
