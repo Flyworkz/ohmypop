@@ -112,7 +112,7 @@ const popController = {
     deleteOne: async (req, res) => {
         try {
             const pop = new Pop(await Pop.findOne(req.params.id));
-            if (!pop) {
+            if (pop === {}) {
                 throw new Error("Ce pop n'existe pas");
             }
             const toDelete = await pop.delete();
