@@ -5,11 +5,14 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const router = require('./router');
 const expressSwagger = require('express-swagger-generator');
+const cors = require('cors');
 
 const app = express();
 const swaggerGenerator = expressSwagger(app);
 
 const port = process.env.PORT || 5555;
+
+app.use(cors());
 
 // Middleware permettant d'envoyer et de recevoir du json dans les requêtes
 app.use(express.json());
