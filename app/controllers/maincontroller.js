@@ -1,6 +1,10 @@
 const mainController = {
     notFound: (req, res) => {
-        res.status(404).json('nope');
+        res.status(400).json({
+            message: "Cette route n'existe pas !",
+            success: false,
+            data: false
+        });
     }
 }
 
