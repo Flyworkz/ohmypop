@@ -55,7 +55,7 @@ class Pop {
             const insertedPop = await db.query('SELECT * FROM new_pop($1);', [this]);
     
             if (insertedPop.rowCount) {
-                for (const prop in insertedPop) {
+                for (const prop in insertedPop.rows[0]) {
                     this[prop] = insertedPop.rows[0][prop];
                 }          
             }
