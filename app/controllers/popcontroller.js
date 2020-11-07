@@ -1,4 +1,5 @@
 const Pop = require('../models/Pop');
+const fs = require('fs');
 
 const popController = {
     findAll: async (_, res) => {
