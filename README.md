@@ -16,16 +16,8 @@ Pour démarrer le projet en mode développement :
 npm run dev
 ```
 
-## Déploiement de la BDD
-
-_coming soon_
-
-## Seeding
-
-_coming soon_
-
 ## Utilisation
 
 /!\ Lien disponible uniquement lorsque le serveur est démarré /!\
 
-http://localhost:<PORT du .env>/api-docs
+https://localhost:<PORT du .env>/api-docs
