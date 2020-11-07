@@ -6,6 +6,7 @@ const express = require('express');
 const router = require('./router');
 const expressSwagger = require('express-swagger-generator');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const swaggerGenerator = expressSwagger(app);
@@ -14,6 +15,7 @@ const port = process.env.PORT || 5555;
 
 app.use(cors());
 
+app.use(express.static(path.join(__dirname, '/../public')));
 // Middleware permettant d'envoyer et de recevoir du json dans les requêtes
 app.use(express.json());
 
