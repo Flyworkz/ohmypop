@@ -20,7 +20,19 @@ const popController = {
 
     addPop: async (req, res) => {
         try {
+            const reqPop = await Pop.findByLabel(req.body.label);
+            if (reqPop) {
+                throw new Error("Ce pop existe déjà");
+            }
+            if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");;
+            }
             const newPop = new Pop(req.body);
+            if (req.file) {
+                newPop.image = `/images/${req.file.filename}`
+            } else {
+                newPop.image = '/images/default.png'
+            }
             await newPop.save();
             if (!newPop.id) {
                 throw new Error("L'insertion du pop a échouée");
@@ -45,12 +57,26 @@ const popController = {
             if (!pop) {
                 throw new Error("Ce pop n'existe pas");
             }
-            for (const prop in req.body) {
-                if (!req.body[prop] || req.body[prop] !== "") {
-                    pop[prop] = req.body[prop];
-                }
+            if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");
             }
             const toUpdate = new Pop(pop);
+            if (req.file) {
+                fs.unlink('public' + toUpdate.image, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+                toUpdate.image = `/images/${req.file.filename}`
+            }
+            for(const prop in req.body) {
+                if (req.body[prop] !== "") {
+                    if (typeof toUpdate[prop] === "number") {
+                        toUpdate[prop] = parseInt(req.body[prop]);
+                    } else {
+                        toUpdate[prop] = req.body[prop];
+                    } 
+                }       
+            }          
             await toUpdate.save();
             if (!toUpdate) {
                 throw new Error("La modification du pop a échouée");
@@ -116,6 +142,10 @@ const popController = {
                 throw new Error("Ce pop n'existe pas");
             }
             const thePop = new Pop(pop);
+            fs.unlink('public' + thePop.image, function(err) {
+                if (err) throw err;
+                console.log('file deleted');
+            });
             const toDelete = await thePop.delete();
             if (toDelete === false) {
                 throw new Error("La suppression du pop a échouée");

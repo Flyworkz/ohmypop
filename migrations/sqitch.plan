@@ -5,3 +5,5 @@ init 2020-10-01T20:21:35Z flyworkz <pedron.dorian@gmail.com> # Création de la t
 functions/insert_rest 2020-10-01T20:52:18Z flyworkz <pedron.dorian@gmail.com> # fonction d'insertion d'un pop dans la bdd
 functions/pop_by_collection 2020-10-01T21:00:03Z flyworkz <pedron.dorian@gmail.com> # Filtrer les pops par collection
 functions/insert_json 2020-10-01T22:23:10Z flyworkz <pedron.dorian@gmail.com> # Insertion d'un pop à partir d'un json
+fix/addPopImage 2020-11-07T13:27:01Z flyworkz <pedron.dorian@gmail.com> # ajout du champ image dans la table pop
+fix/addImageToFunctions 2020-11-07T13:44:10Z flyworkz <pedron.dorian@gmail.com> # prise en compte du champ image dans les fonctions de la table pop

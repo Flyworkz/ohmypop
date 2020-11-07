@@ -21,6 +21,11 @@ class Pop {
         return pops.rows;
     }
 
+    static async findByLabel(label) {
+        const thePop = await db.query('SELECT * FROM pop WHERE label = $1;', [label]);
+        return thePop.rows[0];
+    }
+
     update(data) {
         for (const prop in data) {
             this[prop] = data[prop];
@@ -35,20 +40,24 @@ class Pop {
                     figurine_number = $1, 
                     "collection" = $2, 
                     "label" = $3, 
-                    "status" = $4
-                WHERE id = $5
+                    "status" = $4,
+                    "image" = $5
+                WHERE id = $6
             `, [
                 this.figurine_number, 
                 this.collection, 
                 this.label, 
                 this.status,
+                this.image,
                 this.id
             ]);
         } else {
             const insertedPop = await db.query('SELECT * FROM new_pop($1);', [this]);
     
             if (insertedPop.rowCount) {
-                this.id = insertedPop.rows[0].id;
+                for (const prop in insertedPop) {
+                    this[prop] = insertedPop.rows[0][prop];
+                }          
             }
         }
     }
