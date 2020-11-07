@@ -5,6 +5,7 @@ const { flush, cache } = require('./cache/cacheStrategy');
 const mainController = require('./controllers/maincontroller');
 const { insertPopSchema, updatePopSchema } = require('./schemas/pop');
 const { uploadSchema } = require('./schemas/image');
+const upload = require('./services/upload');
 
 const router = Router();
 
@@ -43,7 +44,7 @@ router.get('/pops/collections/:id', cache, popController.findByCollection);
  * @param {file} image.body.required - Image du pop
  * @returns {JSON} 200 - Un pop
  */
-router.post('/pops', validateBody(insertPopSchema), flush, popController.addPop);
+router.post('/pops', upload, validateBody(insertPopSchema, uploadSchema), flush, popController.addPop);
 
 /**
  * Cette route permet de modifier un pop
@@ -57,7 +58,7 @@ router.post('/pops', validateBody(insertPopSchema), flush, popController.addPop)
  * @param {file} image.body.required - Image du pop
  * @returns {JSON} 200 - Un pop
  */
-router.patch('/pops/:id', validateBody(updatePopSchema), flush, popController.updatePop);
+router.patch('/pops/:id', upload, validateBody(updatePopSchema, uploadSchema), flush, popController.updatePop);
 
 /**
  * Cette route permet de supprimer un pop par son ID
