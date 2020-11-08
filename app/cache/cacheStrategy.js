@@ -4,7 +4,9 @@ let cache;
 let flush;
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
-    const client = redis.createClient();
+    const client = redis.createClient({
+        auth_pass: process.env.REDIS_PASSWORD
+    });
 
     const buildKey = (url, params) => {
         return JSON.stringify({url, params});
